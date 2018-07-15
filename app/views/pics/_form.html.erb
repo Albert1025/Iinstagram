@@ -1,0 +1,18 @@
+<%= simple_form_for @pic, html: {multipart: true } do |f| %>
+	<% if @pic.errors.any? %>
+
+	<%= pluralize(@pic.errors.count, "error") %>
+	prevented this Pic from saving
+	<ul>
+		<% @pic.errors.full_message.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	<% end %>
+	</ul>
+	
+	<%= f.input :title %>
+	<%= f.input :description %>
+	<%= f.button :submit %>
+
+
+<% end %>
