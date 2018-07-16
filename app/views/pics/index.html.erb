@@ -1,3 +1,5 @@
 <% @pics.each do |p| %>
-	<%= link_to p.title, p %>
+	<h2><%= link_to p.title, p %></h2>
 <% end %>
+
+<%= link_to 'Create new pic!', new_pic_path %>
