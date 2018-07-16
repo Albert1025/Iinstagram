@@ -9,8 +9,8 @@
   </head>
 
   <body>
-  <h1><%= link_to 'Iinstagram', root_path %></h1><br>
-  <% if current_user %>
+  <h1 style="display: inline-grid;"><%= link_to 'IInstagram', root_path %></h1>
+  <div style="display: inline-grid; float:right;"><% if current_user %>
     Logged in as <%= current_user.email %>,
     <%= link_to "Profile", user_path(current_user) %>
     <%= link_to "Log Out", logout_path %>
@@ -18,7 +18,10 @@
     <%= link_to "Sign Up", signup_path %> or
     <%= link_to "Log In", login_path %>
   <% end %>
-
+  </div>
+  <br>
+  <br>
+  <br>
   <% flash.each do |name, msg| %>
   	<%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>

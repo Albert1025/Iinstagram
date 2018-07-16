@@ -1,11 +1,16 @@
-<h1><%= @pic.title %></h1>
+<div style="text-align: center;">
+<%= image_tag @pic.image.url %>
+<h1 ><%= @pic.title %></h1>
 
 <%= @pic.description %>
 
 <p> Posted by: <%= @pic.user.email %> </p>
+
 
 <br/>
 
 <%= link_to "Back", root_path %>
 <%= link_to 'Edit', edit_pic_path %>
 <%= link_to 'Delete', pic_path, method: :delete, data: {confirm: "Are you sure?"} %>
+
+</div>

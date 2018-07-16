@@ -9,7 +9,11 @@ class PicsController < ApplicationController
 	end
 
 	def new
-		@pic = current_user.pics.build
+		if current_user
+			@pic = current_user.pics.build
+		else
+			redirect_to login_path, notice: "Please sign in before posting"
+		end
 	end
 
 	def create
@@ -39,7 +43,7 @@ class PicsController < ApplicationController
 
 	private
 		def pic_params
-			params.require(:pic).permit(:title, :description)
+			params.require(:pic).permit(:title, :description, :image)
 		end
 
 		def find_pic
