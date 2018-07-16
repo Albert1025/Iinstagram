@@ -2,6 +2,7 @@ class PicsController < ApplicationController
 	before_action :find_pic, only: [:show, :destroy, :edit, :update]
 
 	def index
+		@pics = Pic.all
 	end
 
 	def show
