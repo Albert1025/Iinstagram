@@ -2,7 +2,11 @@ class PicsController < ApplicationController
 	before_action :find_pic, only: [:show, :destroy, :edit, :update, :upvote]
 
 	def index
-		@pics = Pic.all.order("created_at DESC")
+		if params[:search]
+			@pics = Pic.where('title LIKE ?', "%#{params[:search]}%")
+		else
+			@pics = Pic.all.order("created_at DESC")
+		end
 	end
 
 	def show

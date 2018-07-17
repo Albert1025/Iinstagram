@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :pics
-
+  attr_accessor :custom_field
   has_secure_password
 
   validates :first_name,

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_only!, only: [:index]
   # GET /users
   # GET /users.json
   def index
@@ -60,6 +60,9 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+
+  
   end
 
   private
@@ -68,8 +71,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def admin_only!
+      unless current_user.admin?
+        redirect_to root_path, notice: "You are not allowed there!"
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
     end
 end

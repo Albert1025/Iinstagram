@@ -8,6 +8,10 @@
     <%= f.input :last_name %>
     <%= f.input :email %>
     <%= f.input :password %>
+    <%= f.input :custom_field, :label => false do %>
+      <%= check_box_tag :admin %>
+    <% end %>
+    
   </div>
 
   <div class="form-actions">
