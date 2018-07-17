@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-	resources :pics
+	resources :pics do
+		member do
+			put "like", to: "pics#upvote"
+		end
+	end
+
 	root "pics#index"
 
 

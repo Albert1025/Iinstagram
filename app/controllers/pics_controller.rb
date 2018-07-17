@@ -1,5 +1,5 @@
 class PicsController < ApplicationController
-	before_action :find_pic, only: [:show, :destroy, :edit, :update]
+	before_action :find_pic, only: [:show, :destroy, :edit, :update, :upvote]
 
 	def index
 		@pics = Pic.all.order("created_at DESC")
@@ -41,6 +41,15 @@ class PicsController < ApplicationController
 		redirect_to root_path, notice: "Pic Deleted!"
 	end
 
+	def upvote
+		if current_user
+			@pic.upvote_by current_user
+			redirect_back fallback_location: root_path
+		else
+			redirect_to login_path, notice: "Please sign in before upvoting"
+		end
+	end
+
 	private
 		def pic_params
 			params.require(:pic).permit(:title, :description, :image)
@@ -49,5 +58,7 @@ class PicsController < ApplicationController
 		def find_pic
 			@pic = Pic.find(params[:id])
 		end
+
+
 
 end

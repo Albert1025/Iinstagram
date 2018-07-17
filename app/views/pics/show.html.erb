@@ -9,7 +9,10 @@
 
 <br/>
 	<%= link_to "Back", root_path %>
+	<%= link_to "like", like_pic_path(@pic), method: :put %>
+	<%= @pic.get_upvotes.size %>
 <% if current_user == @pic.user %>
+
 	<%= link_to 'Edit', edit_pic_path %>
 	<%= link_to 'Delete', pic_path, method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
