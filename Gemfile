@@ -29,9 +29,12 @@ gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
- gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
- gem 'paperclip', '~> 4.2.0'
+gem 'paperclip', '~> 4.2.0'
+gem 'acts_as_votable', '~> 0.11.1'
+gem 'geocoder'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -41,7 +44,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'acts_as_votable', '~> 0.11.1'
 end
 
 group :development do
