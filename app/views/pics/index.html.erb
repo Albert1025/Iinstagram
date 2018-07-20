@@ -1,14 +1,15 @@
 <div style="text-align:center">
+
+<%= will_paginate @pics %>
+
+	<h2><%= link_to 'Create new pic!', new_pic_path %></h2>
+	
 	<%= form_tag pics_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
-
-	<% @pics.each do |p| %>
-		<%= link_to (image_tag p.image.url(:medium)), p %>
-		<h2><%= link_to p.title, p %></h2>
-	<% end %>
-
+	<div id="pics">
+		<%= render @pics %>
+	</div>
 </div>
 
-<%= link_to 'Create new pic!', new_pic_path %>

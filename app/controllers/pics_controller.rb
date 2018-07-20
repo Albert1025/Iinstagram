@@ -5,7 +5,7 @@ class PicsController < ApplicationController
 		if params[:search]
 			@pics = Pic.where('title LIKE ?', "%#{params[:search]}%")
 		else
-			@pics = Pic.all.order("created_at DESC")
+			@pics = Pic.all.order("created_at DESC").page(params[:page]).per_page(3)
 		end
 	end
 
@@ -56,7 +56,7 @@ class PicsController < ApplicationController
 
 	private
 		def pic_params
-			params.require(:pic).permit(:title, :description, :image)
+			params.require(:pic).permit(:title, :description, :image, :address, :latitude, :longitude)
 		end
 
 		def find_pic

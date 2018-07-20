@@ -6,6 +6,10 @@
 
 <p> Posted by: <%= @pic.user.email %> </p>
 
+		<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@pic.latitude}%2C#{@pic.longitude}&key=#{Rails.application.secrets.google_places_key}" %>
+<p> Posted at: <%= @pic.address %> </p>
+
+<br>
 
 <br/>
 	<%= link_to "Back", root_path %>

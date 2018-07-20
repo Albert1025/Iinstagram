@@ -13,6 +13,17 @@
 	<%= f.input :title %>
 	<%= f.input :image %>
 	<%= f.input :description %>
+	
+	<div class="field">
+    <%= f.input :address %>
+  </div>
+
+  <div class="field">
+    <%= f.input :latitude %><span>(leave empty)</span>
+  </div>
+
+  <div class="field">
+    <%= f.input :longitude %><span>(leave empty)</span>
 
 	<br>
 	<%= f.button :submit %>
