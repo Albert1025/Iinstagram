@@ -12,8 +12,10 @@
 	<%= link_to "like", like_pic_path(@pic), method: :put %>
 	<%= @pic.get_upvotes.size %>
 
-<% if current_user == @pic.user || current_user.admin = true %>
-	<%= link_to 'Edit', edit_pic_path %>
-	<%= link_to 'Delete', pic_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<% if current_user %>
+	<% if current_user == @pic.user || current_user.admin == true %>
+		<%= link_to 'Edit', edit_pic_path %>
+		<%= link_to 'Delete', pic_path, method: :delete, data: {confirm: "Are you sure?"} %>
+	<% end %>
 <% end %>
 </div>
