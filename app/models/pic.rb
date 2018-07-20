@@ -1,5 +1,5 @@
 class Pic < ApplicationRecord
-	acts_as_votable
+	require 'acts_as_votable'
 	
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
